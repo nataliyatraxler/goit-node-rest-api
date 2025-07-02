@@ -1,31 +1,22 @@
 import Joi from "joi";
 
+// Схема для створення нового контакту
 export const addContactSchema = Joi.object({
-  name: Joi.string().required().messages({
-    "any.required": `"name" is required`,
-    "string.base": `"name" must be a string`,
-  }),
-  email: Joi.string().email().required().messages({
-    "any.required": `"email" is required`,
-    "string.email": `"email" must be a valid email`,
-  }),
-  phone: Joi.string().required().messages({
-    "any.required": `"phone" is required`,
-    "string.base": `"phone" must be a string`,
-  }),
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  phone: Joi.string().required(),
+  favorite: Joi.boolean().optional(),
 });
 
+// Схема для оновлення контакту (мінімум 1 поле)
 export const updateContactSchema = Joi.object({
-  name: Joi.string().messages({
-    "string.base": `"name" must be a string`,
-  }),
-  email: Joi.string().email().messages({
-    "string.email": `"email" must be a valid email`,
-  }),
-  phone: Joi.string().messages({
-    "string.base": `"phone" must be a string`,
-  }),
-}).min(1).messages({
-  "object.min": "Body must have at least one field",
-});
+  name: Joi.string(),
+  email: Joi.string().email(),
+  phone: Joi.string(),
+  favorite: Joi.boolean(),
+}).min(1);
 
+// Схема для оновлення статусу favorite
+export const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
