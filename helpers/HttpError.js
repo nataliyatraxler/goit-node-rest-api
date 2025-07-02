@@ -1,6 +1,8 @@
-export default function HttpError(status, message = "Error") {
-    const error = new Error(message);
-    error.status = status;
-    return error;
+class HttpError extends Error {
+  constructor(status, message) {
+    super(message);
+    this.status = status;
   }
-  
+}
+
+export default HttpError;
