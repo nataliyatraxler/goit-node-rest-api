@@ -27,10 +27,10 @@ export const defineContactModel = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Users", // ⚠️ назва таблиці, не моделі
+        model: "Users", 
         key: "id",
       },
-      onDelete: "CASCADE", // 🧹 видалення контактів при видаленні юзера
+      onDelete: "CASCADE", 
     },
   });
 
