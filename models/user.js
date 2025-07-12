@@ -4,6 +4,15 @@ export const defineUserModel = (sequelize) => {
   const User = sequelize.define(
     "User",
     {
+      verify: {
+  type: DataTypes.BOOLEAN,
+  defaultValue: false,
+},
+verificationToken: {
+  type: DataTypes.STRING,
+},
+
+
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -30,8 +39,8 @@ export const defineUserModel = (sequelize) => {
       },
     },
     {
-      freezeTableName: true, // 👈 не дозволяє Sequelize перейменовувати в "Users"
-      tableName: "Users",    // 👈 явно вказуємо назву таблиці
+      freezeTableName: true, 
+      tableName: "Users",   
     }
   );
 

@@ -32,5 +32,13 @@ export const testConnection = async () => {
   }
 };
 
-// ⬅️ ВАЖЛИВО: саме тут default
+
+sequelize.sync({ alter: true })
+  .then(() => {
+    console.log('✅ DB synced');
+  })
+  .catch((err) => {
+    console.error('❌ Sync error:', err);
+  });
+
 export default sequelize;
